@@ -2,6 +2,10 @@
 
 DLDR is a daemon that controls a download script on a remote server.
 
+## Planning diagrams
+
+http://imgur.com/a/xDjZ8
+
 ## Database access
 
 * Planning to use: https://github.com/erikh/ruby-dbi
