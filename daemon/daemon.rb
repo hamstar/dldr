@@ -2,7 +2,7 @@ require "uri"
 require "net/http"
 require "json"
 
-api_url = "http://hax.420truth.com/api.rhtml";
+api_url = "http://example.com/api.rhtml";
 run_daemon = true
 
 while run_daemon == true
