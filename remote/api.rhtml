@@ -1,11 +1,12 @@
-
 require "cgi"
 require 'digest/md5'
 
 cgi = CGI.new
 api = API.new
 
+# Tell the API class where to find/put the wget log files
 run_folder = File.dirname(__FILE__) + "/run"
+api.run_folder( run_folder )
 
 case cgi["action"]
 
