@@ -16,6 +16,9 @@ case cgi["action"]
   when "status"
     result = api.status( cgi["url"] )
 
+  when "cookie"
+    result = api.save_cookie( cgi["domain"], cgi["cookie_text"] )
+
   else
     result = { "error" => "Invalid action" }
 
