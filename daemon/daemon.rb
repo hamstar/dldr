@@ -1,4 +1,3 @@
-
 require "uri"
 require "net/http"
 require "json"
@@ -6,7 +5,7 @@ require "json"
 api_url = "http://hax.420truth.com/api.rhtml";
 run_daemon = true
 
-until run_daemon == false
+while run_daemon == true
 
   # get running download from db
   download = Download.running
@@ -20,9 +19,7 @@ until run_daemon == false
         "url" => download.url
       }
       
-      x = Net::HTTP.post_form( api_url, params );
-      
-      json = JSON.parse x.body
+      json = JSON.parse Net::HTTP.post_form( api_url, params ).body;
       
       download.update( json )
       sleep(10.seconds)
@@ -37,9 +34,8 @@ until run_daemon == false
     "url" => download.url
   }
   
-  x = Net::HTTP.post_form( api_url, params );
+  json = JSON.parse Net::HTTP.post_form( api_url, params ).body;
 
-  json = JSON.parse x.body
-  download.update( json )
+  download.status = json.status
 
 end
