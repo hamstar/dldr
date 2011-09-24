@@ -1,0 +1,23 @@
+
+require "cgi"
+require 'digest/md5'
+
+cgi = CGI.new
+
+run_folder = File.dirname(__FILE__) + "/run"
+
+case cgi['action']
+
+  when "download"
+    dldr = DLDR.new( run_folder )
+    filename = Digest::MD5.hexdigest( cgi["url"] )
+    dldr.get( cgi["url"], filename )
+
+  when "status"
+    filename = Digest::MD5.hexdigest( cgi["url"] )
+    IO.foreach(filename){|block| puts block}
+
+  else
+    puts "WTF is this?"
+
+end
