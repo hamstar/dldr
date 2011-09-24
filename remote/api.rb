@@ -1,12 +1,21 @@
-
 class API
   @run_folder
+  @cookie_folder
   
   def run_folder=(run_folder)
-    if run_folder[run_folder.length] != "/"
-      run_folder + "/"
+    @run_folder = append_slash run_folder
+  end
+  
+  def cookie_folder=(cookie_folder)
+    @cookie_folder = append_slash cookie_folder
+  end
+  
+  def append_slash=(folder)
+    if folder[folder.length] != "/"
+      folder + "/"
     end
-    @run_folder = run_folder
+    
+    folder
   end
   
   def download( url )
@@ -67,6 +76,15 @@ class API
     }
   end
   
+  def save_cookie=(domain, cookie_text)
   
+    filename = @cookie_folder + domain + ".cookie"
+    File.open(filename, 'w') {|f| f.write(cookie_text) }
+  
+    {
+      "error" => 0,
+      "message" => "Saved cookie"
+    }
+  end
 
 end
