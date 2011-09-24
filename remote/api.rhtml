@@ -20,7 +20,10 @@ case cgi["action"]
     result = api.save_cookie( cgi["domain"], cgi["cookie_text"] )
 
   else
-    result = { "error" => "Invalid action" }
+    result = {
+      "error"   => 1,
+      "message" => "Invalid action"
+    }
 
 end
 
