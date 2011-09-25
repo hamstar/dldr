@@ -21,7 +21,7 @@ while run_daemon == true
       
       json = JSON.parse Net::HTTP.post_form( api_url, params ).body;
       
-      download.update( json )
+      download.status = json.status
       sleep(10.seconds)
     end
   end
