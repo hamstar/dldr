@@ -1,0 +1,3 @@
+DirectoryIndex index.rhtml index.html index.htm
+AddHandler rubypage .rhtml
+Action rubypage /eruby.cgi

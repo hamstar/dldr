@@ -1,5 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <title>Eruby!</title>
+ </head>
+ <body>
+
+<%
+
+$LOAD_PATH.unshift( File.join( File.dirname(__FILE__), 'lib' ) )
+
 require "cgi"
 require 'digest/md5'
+require 'api'
 
 cgi = CGI.new
 api = API.new
@@ -26,5 +38,10 @@ case cgi["action"]
     }
 
 end
-
 puts JSON.generate( result );
+%>
+
+
+
+ </body>
+</html>
